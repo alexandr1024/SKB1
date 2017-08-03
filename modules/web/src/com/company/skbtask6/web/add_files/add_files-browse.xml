@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.skbtask6.web.add_files.ADD_FILESBrowse"
+        focusComponent="aDD_FILEsesTable"
+        lookupComponent="aDD_FILEsesTable"
+        messagesPack="com.company.skbtask6.web.add_files">
+    <dsContext>
+        <groupDatasource id="aDD_FILEsesDs"
+                         class="com.company.skbtask6.entity.ADD_FILES"
+                         view="_local">
+            <query>
+                <![CDATA[select e from skbtask6$ADD_FILES e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="aDD_FILEsesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="aDD_FILEsesTable"
+                datasource="aDD_FILEsesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="aDD_FILEsesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="f_name"/>
+                <column id="type"/>
+                <column id="id_file"/>
+            </columns>
+            <rows datasource="aDD_FILEsesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="aDD_FILEsesTable.create"/>
+                <button id="editBtn"
+                        action="aDD_FILEsesTable.edit"/>
+                <button id="removeBtn"
+                        action="aDD_FILEsesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

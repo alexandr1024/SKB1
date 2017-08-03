@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.skbtask6.web.add_files.ADD_FILESEdit"
+        datasource="aDD_FILESDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.skbtask6.web.add_files">
+    <dsContext>
+        <datasource id="aDD_FILESDs"
+                    class="com.company.skbtask6.entity.ADD_FILES"
+                    view="_local"/>
+        <collectionDatasource id="id_filesDs"
+                              class="com.haulmont.cuba.core.entity.FileDescriptor"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from sys$FileDescriptor e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="aDD_FILESDs">
+            <column width="250px">
+                <field property="f_name"/>
+                <field property="type"/>
+                <field optionsDatasource="id_filesDs"
+                       property="id_file"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
